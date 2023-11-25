@@ -1,4 +1,4 @@
-package exception.insects;
+package exceptions.insects;
 
 public class DuplicateInsectException extends Exception {
     @Override

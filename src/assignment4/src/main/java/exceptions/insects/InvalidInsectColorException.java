@@ -1,4 +1,4 @@
-package exception.insects;
+package exceptions.insects;
 
 public class InvalidInsectColorException extends Exception {
     @Override

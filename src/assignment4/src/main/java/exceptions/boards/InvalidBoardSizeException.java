@@ -1,4 +1,4 @@
-package exception.boards;
+package exceptions.boards;
 
 public class InvalidBoardSizeException extends Exception{
     @Override
