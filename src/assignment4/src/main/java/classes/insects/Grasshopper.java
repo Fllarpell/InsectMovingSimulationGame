@@ -18,7 +18,7 @@ public class Grasshopper extends Insect {
     }
 
     @Override
-    public int travelDirection(int direction, Map<String, BoardEntity> boardData, int boardSize) {
+    public int travelDirection(Direction dir, Map<String, BoardEntity> boardData, int boardSize) {
         return 0;
     }
 }

@@ -17,20 +17,24 @@ public class Board {
     }
 
     public void addEntity(BoardEntity entity) {
-
+        boardData.put(String.valueOf(entity.hashCode()), entity);
     }
 
     public BoardEntity getEntity(EntityPosition entity) {
-
+        for (BoardEntity boardEntity: boardData.values()) {
+            if (entity.equals(boardEntity.entityPosition)) {
+                return boardEntity;
+            }
+        }
         return null;
     }
 
     public Direction getDirection(Insect insect) {
-        return null;
+        return insect.getBestDirection(boardData, size);
     }
 
     public int getDirectionSum(Insect insect) {
-        return 0;
+        return insect.travelDirection(getDirection(insect), boardData, size);
     }
 
     @Override

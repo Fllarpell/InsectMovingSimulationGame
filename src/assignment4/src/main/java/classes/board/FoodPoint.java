@@ -11,4 +11,7 @@ public class FoodPoint extends BoardEntity {
         this.entityPosition = entity;
     }
 
+    public int getValue() {
+        return value;
+    }
 }
