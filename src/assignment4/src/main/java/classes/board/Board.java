@@ -5,23 +5,45 @@ import enumerations.Direction;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
+/**
+ * The class Board contains all entities that are on the board in the HashMap "boardData",
+ * also contains the methods that start movements of insect.
+ */
 public class Board {
-    private final int size;
+    private static int size;
 
-    private final Map<String, BoardEntity> boardData = new HashMap<String, BoardEntity>();
+    private static Map<EntityPosition, BoardEntity> boardData = new HashMap<>();
 
+    /**
+     * Instantiates a new Board.
+     *
+     * @param size the size of board
+     */
     public Board(int size) {
-        this.size = size;
+        Board.size = size;
     }
 
+    /**
+     * Add entity on the board.
+     *
+     * @param entity the entity
+     */
     public void addEntity(BoardEntity entity) {
-        boardData.put(String.valueOf(entity.hashCode()), entity);
+        boardData.put(entity.entityPosition, entity);
     }
 
+    /**
+     * Gets entity from the board.
+     *
+     * @param entity the entity
+     * @return the entity
+     */
     public BoardEntity getEntity(EntityPosition entity) {
         for (BoardEntity boardEntity: boardData.values()) {
+            if (boardEntity.entityPosition == entity) {
+                continue;
+            }
             if (entity.equals(boardEntity.entityPosition)) {
                 return boardEntity;
             }
@@ -29,25 +51,41 @@ public class Board {
         return null;
     }
 
-    public Direction getDirection(Insect insect) {
+    /**
+     * Gets direction of insect.
+     *
+     * @param insect the insect
+     * @return the direction
+     */
+    public  Direction getDirection(Insect insect) {
         return insect.getBestDirection(boardData, size);
     }
 
-    public int getDirectionSum(Insect insect) {
+    /**
+     * Gets direction sum of eaten food.
+     *
+     * @param insect the insect
+     * @return the direction sum
+     */
+    public  int getDirectionSum(Insect insect) {
         return insect.travelDirection(getDirection(insect), boardData, size);
     }
 
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        Board board = (Board) object;
-        return size == board.size && Objects.equals(boardData, board.boardData);
+    /**
+     * Gets size of the board.
+     *
+     * @return the size
+     */
+    public static int getSize() {
+        return size;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(size, boardData);
+    /**
+     * Gets full data of the board (HashMap).
+     *
+     * @return the board data
+     */
+    public Map<EntityPosition, BoardEntity> getBoardData() {
+        return boardData;
     }
-
 }

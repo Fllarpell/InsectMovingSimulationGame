@@ -1,9 +1,11 @@
 package classes.board;
 
+/**
+ * Common class for food and insects.
+ */
 public abstract class BoardEntity {
-    protected EntityPosition entityPosition;
-
-    public EntityPosition getEntityPosition() {
-        return entityPosition;
-    }
+    /**
+     * The Entity position on the board.
+     */
+    public EntityPosition entityPosition;
 }
