@@ -13,7 +13,7 @@ import java.util.Map;
 public class Board {
     private static int size;
 
-    private static Map<EntityPosition, BoardEntity> boardData = new HashMap<>();
+    private final static Map<EntityPosition, BoardEntity> boardData = new HashMap<>();
 
     /**
      * Instantiates a new Board.
